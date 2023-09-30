@@ -4,6 +4,7 @@
 // new element is added by any web page!
 
 const CLASS_SEARCH_STRINGS = [
+  '[class="lockup-overlay__sports-score__score__team"]',
   '[class="epic-stage-metadata-title__score"]',
   '[class*="scoreboard__score"]'
 ];
