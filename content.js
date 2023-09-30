@@ -1,5 +1,8 @@
 // content.js
 
+// WARNING! This is a pretty bad implementation since it runs the DOM query any time any
+// new element is added by any web page!
+
 const CLASS_SEARCH_STRINGS = [
   '[class="epic-stage-metadata-title__score"]',
   '[class*="scoreboard__score"]'
@@ -8,8 +11,7 @@ const REPLACEMENT_TEXT = '?';
 
 const queryString = CLASS_SEARCH_STRINGS.join(", ");
 
-
-function hideOrChangeScoreElements() {
+function hideScores() {
   const elementsWithScoreClass = document.querySelectorAll(queryString);
 
   // Change the text content of each selected element to a question mark
@@ -19,13 +21,13 @@ function hideOrChangeScoreElements() {
 }
 
 // Execute the function when the page loads
-window.addEventListener('load', hideOrChangeScoreElements);
+window.addEventListener('load', hideScores);
 
 // Function to be called when new elements are added
 function handleNewElements(mutationsList, observer) {
   for (const mutation of mutationsList) {
     if (mutation.type === 'childList') {
-      hideOrChangeScoreElements();
+      hideScores();
     }
   }
 }
