@@ -12,6 +12,8 @@ const REPLACEMENT_TEXT = '?';
 
 const queryString = CLASS_SEARCH_STRINGS.join(", ");
 
+const APPLE_TV_URL_BEGINNING = 'https://tv.apple.com/';
+
 function hideScores() {
   const elementsWithScoreClass = document.querySelectorAll(queryString);
 
@@ -26,6 +28,13 @@ window.addEventListener('load', hideScores);
 
 // Function to be called when new elements are added
 function handleNewElements(mutationsList, observer) {
+  // Only run if we're on Apple TV's page.
+  // TODO: Improve perf a little by creating the observer only when we're on
+  // Apple TV, and destroying it when we leave.
+  if (!window.location.href.startsWith(APPLE_TV_URL_BEGINNING)) {
+    return;
+  }
+
   for (const mutation of mutationsList) {
     if (mutation.type === 'childList') {
       hideScores();
