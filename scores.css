@@ -1,0 +1,17 @@
+/* Grid/list view: scoreboard scores on match cards */
+.team-score__score {
+  font-size: 0 !important;
+}
+.team-score__score::after {
+  content: "?" !important;
+  font-size: 1rem !important;
+}
+
+/* Individual game page: scores in the product header */
+.competitors .team-score {
+  font-size: 0 !important;
+}
+.competitors .team-score::after {
+  content: "?" !important;
+  font-size: 3rem !important;
+}

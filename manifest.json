@@ -1,16 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Apple TV MLS Score Hider Chrome Extension",
-  "version": "1.0",
-  "description": "Hide scoresHide",
-  "permissions": ["activeTab"],
+  "name": "Apple TV MLS Score Hider",
+  "version": "2.0",
+  "description": "Hides MLS score numbers on Apple TV web pages to avoid spoilers",
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "matches": ["https://tv.apple.com/*"],
+      "css": ["scores.css"],
+      "run_at": "document_start"
     }
-  ],
-  "action": {
-  }
+  ]
 }
-
